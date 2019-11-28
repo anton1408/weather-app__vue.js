@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <CityCard city="Kharkiv" />
+    <CityCard city="Kiev" />
+
   </div>
 </template>
 

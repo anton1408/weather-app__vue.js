@@ -10,8 +10,19 @@
     <div class="pl-3 city-card__overcast">
       {{ this.formattedForecastData[0].overcast }}
     </div>
-    <div class="pl-3 city-card__date">
+    <div class="mb-4 pl-3 city-card__date">
       {{ this.formattedForecastData[0].date }}
+    </div>
+    <div class="city-card_group-buttons">
+      <button class="city-card__btn">
+        Details
+      </button>
+      <button
+        class="city-card__btn"
+        @click="getForecastData"
+      >
+        Refresh
+      </button>
     </div>
   </div>
 </template>
@@ -44,7 +55,6 @@ export default {
       this.$http.get(`http://api.openweathermap.org/data/2.5/forecast?q=${this.city}&units=metric&appid=b73f83fed9c3ed5c0c4b2ef9c0782101`)
         .then((response) => {
           this.forecastData = response.data.list;
-          console.log(this.forecastData);
         });
     },
 
@@ -68,7 +78,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import '@/design/index';
 
@@ -97,12 +106,13 @@ export default {
     font-weight: 600;
   }
 
-  &__forecast-details {
-    border: 1px solid $blue-grey;
+  &_group-buttons {
+    display: flex;
+    justify-content: space-around;
   }
 
-  &__details-row {
-    display: flex;
+  &__btn {
+    font-size: 16px;
   }
 }
 </style>
